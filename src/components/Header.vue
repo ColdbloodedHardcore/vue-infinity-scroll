@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { debounce } from "lodash";
+
 export default {
   name: "Header",
   data() {
@@ -17,6 +19,9 @@ export default {
   methods: {
     searchGifs() {
       this.$emit("searchGifs", this.query);
+    },
+    search() {
+      debounce(this.searchGifs, 400);
     },
   },
 };
